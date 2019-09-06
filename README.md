@@ -13,3 +13,7 @@ To install please run...
 chmod +x install && ./install
 
 ...to install all the required dependancys.
+
+if you have any questions or suggestions about autoScript please feel free to contact
+me at tree.autoScript@gmail.com
+
