@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 clear
-figlet autoScript
+         _       ____            _       _   
+__ _ _ | | / | ___ _ __() __ | | / ` | | | | / _ _ \ / | '| | ' | __| | (| | || | || () |) | (| | | | |) | | _,|_,|____// ___|| || .__/ _| |_|
 echo ""
 echo Made by Treebug842
 echo ""
