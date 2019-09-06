@@ -2,3 +2,16 @@
 
 clear
 sudo apt-get update
+sudo apt-get autoremove -y
+sudo apt-get autoclean -y
+sudo apt-get upgrade -y
+sudo dpkg --configure -a
+sudo apt-get update --fix-missing
+sudo apt-get install -f
+sudo apt-get update
+sudo apt-get upgrade
+cd ~/Programs
+rm -R autoScript
+git clone https://github.com/Treebug842/autoScript-update.git
+cd ~
+clear
