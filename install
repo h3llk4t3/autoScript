@@ -14,7 +14,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install aircrack-ng -y
 sudo apt-get install hping3
-sudo apt-get install figlet toilet
+sudo apt-get install figlet toilet -y
 cd ~/Programs/
 git clone https://github.com/ZerBea/hcxdumptool.git
 cd hcxdumptool
