@@ -14,6 +14,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install aircrack-ng -y
 sudo apt-get install hping3
+sudo apt-get install figlet toilet
 cd ~/Programs/
 git clone https://github.com/ZerBea/hcxdumptool.git
 cd hcxdumptool
@@ -25,11 +26,15 @@ cd hcxtools﻿
 make
 make install
 sudo apt-get install hashcat -y
+cd ~/autoScript
+chmod +x autoScript
+cd ~
+sudo mv autoScript Programs
 echo ""
 echo "Installation finished"
 sleep 1
 echo ""
-echo "you can now delete this program"
+echo "autoScript moved to programs"
 sleep 2
 echo ""
 read -n 1 -r -s -p "Press any key to continue..."
