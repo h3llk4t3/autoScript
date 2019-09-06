@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 clear
-         _       ____            _       _   
-__ _ _ | | / | ___ _ __() __ | | / ` | | | | / _ _ \ / | '| | ' | __| | (| | || | || () |) | (| | | | |) | | _,|_,|____// ___|| || .__/ _| |_|
+figlet autoScript
 echo ""
 echo Made by Treebug842
 echo ""
