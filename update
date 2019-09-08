@@ -7,6 +7,8 @@ git clone https://github.com/Treebug842/autoScript-update.git
 cd ~/Programs/autoScript/autoScript-update
 mv autoScript ~/Programs/autoScript
 cd ~/Programs/autoScript
-Rm -R autoScript-update
+rm -R autoScript-update
+rm -R update
+git clone https://github.com/Treebug842/autoScript-updatefile
 cd ~
 clear
