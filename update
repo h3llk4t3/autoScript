@@ -14,5 +14,7 @@ cd ~/Programs/autoScript/autoScript-updatefile
 mv update ~/Programs/autoScript
 cd ~/Programs/autoScript
 rm -R autoScript-updatefile
+chmod +x autoScript
+chmod +x update
 cd ~
 clear
