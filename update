@@ -10,5 +10,9 @@ cd ~/Programs/autoScript
 rm -R autoScript-update
 rm -R update
 git clone https://github.com/Treebug842/autoScript-updatefile
+cd ~/Programs/autoScript/autoScript-updatefile
+mv update ~/Programs/autoScript
+cd ~/Programs/autoScript
+rm -R autoScript-updatefile
 cd ~
 clear
