@@ -1,20 +1,12 @@
 #!/usr/bin/env bash
 
 clear
-sudo apt-get update
-sudo apt-get autoremove -y
-sudo apt-get autoclean -y
-sudo apt-get upgrade -y
-sudo dpkg --configure -a
-sudo apt-get update --fix-missing
-sudo apt-get install -f
-sudo apt-get update
-sudo apt-get upgrade
-cd ~/Programs
+cd ~/Programs/autoScript
 rm -R autoScript
 git clone https://github.com/Treebug842/autoScript-update.git
-cd ~/Programs/autoScript
+cd ~/Programs/autoScript/autoScript-update
 mv autoScript ~/Programs/autoScript
+cd ~/Programs/autoScript
 Rm -R autoScript-update
 cd ~
 clear
