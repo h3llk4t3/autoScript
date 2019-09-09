@@ -27,7 +27,7 @@ make
 make install
 sudo apt-get install hashcat -y
 cd ~/autoScript
-chmod +x autoScript
+chmod +x autoScript.sh
 chmod +x update
 cd ~
 sudo mv autoScript Programs
