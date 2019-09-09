@@ -41,8 +41,11 @@ echo ""
 echo "Installation finished"
 sleep 1
 echo ""
-echo "type "autoScript" to run program"
-sleep 2
+echo "Type "autoScript" to run program"
+sleep 1
+echo ""
+echo "You might want to restart terminal"
+sleep 1
 echo ""
 read -n 1 -r -s -p "Press any key to continue..."
 clear
