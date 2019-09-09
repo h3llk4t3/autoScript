@@ -33,11 +33,15 @@ cd ~
 sudo mv autoScript Programs
 cd ~/Programs/autoScript
 mkdir Capture-Files
+cd ~
+head -n -1 .bashrc > temp.txt ; mv temp.txt .bashrc
+echo "alias autoScript='cd ~/Programs/autoScript && .autoScript.sh && cd ~'" >> .bashrc
+echo "fi" >> .bashrc
 echo ""
 echo "Installation finished"
 sleep 1
 echo ""
-echo "autoScript moved to programs"
+echo "type "autoScript" to run program"
 sleep 2
 echo ""
 read -n 1 -r -s -p "Press any key to continue..."
