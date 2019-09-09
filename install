@@ -31,6 +31,8 @@ chmod +x autoScript
 chmod +x update
 cd ~
 sudo mv autoScript Programs
+cd ~/Programs/autoScript
+mkdir Capture-Files
 echo ""
 echo "Installation finished"
 sleep 1
