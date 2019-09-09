@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+clear
+cd ~/Programs/autoScript
+rm -R autoScript
+git clone https://github.com/Treebug842/autoScript-update.git
+cd ~/Programs/autoScript/autoScript-update
+mv autoScript.sh ~/Programs/autoScript
+mv update ~/Programs/autoScript
+cd ~/Programs/autoScript
+rm -R autoScript-update
+chmod +x autoScript.sh
+chmod +x update
+cd ~
+clear
