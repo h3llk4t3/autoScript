@@ -310,7 +310,7 @@ echo "Network adapter not found"
 sleep 2
 exec bash "$0" "$@"
 fi
-ifconfig "$NETWORK" > /dev/null 2>&1
+ifconfig "$NETWORK" down > /dev/null 2>&1
 iwconfig "$NETWORK" mode managed > /dev/null 2>&1
 ifconfig "$NETWORK" up > /dev/null 2>&1
 airmon-ng check kill > /dev/null 2>&1
