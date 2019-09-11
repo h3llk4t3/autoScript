@@ -2,7 +2,6 @@
 
 clear
 cd ~/Programs/autoScript
-rm -R autoScript
 git clone https://github.com/Treebug842/autoScript.git
 cd ~/Programs/autoScript/autoScript
 mv autoScript.sh ~/Programs/autoScript
