@@ -457,9 +457,30 @@ sleep 2
 exec bash "$0" "$@"
 elif [ $METHOD == 1 ]
 then
+clear
+echo "Crack password using default password lists"
 echo ""
-echo "Coming soon..."
-sleep 2
+echo "===================================================================="
+cd ~/Programs/autoScript/Password-Lists/
+ls
+echo "===================================================================="
+echo ""
+read -p "Enter password list: " LIST
+echo ""
+echo "===================================================================="
+cd ~/Programs/autoScript/Capture-Files/
+ls *.16800
+echo "===================================================================="
+echo ""
+read -p "Enter hash: " HASH
+echo ""
+read -n 1 -s -r -p "Press any key to begin crack..."
+clear
+cd ~/Programs/autoScript/Password-Lists/
+hashcat -m 16800 ~/Programs/autoScript/Capture-Files/"$HASH" -a 0 --kernel-accel=1 -w 4 --force $LIST
+echo ""
+read -n 1 -r -s -p "Press any key to continue..."
+cd ~/Programs/autoScript
 exec bash "$0" "$@"
 elif [ $METHOD == 2 ]
 then
