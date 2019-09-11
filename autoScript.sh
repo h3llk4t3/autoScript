@@ -1,35 +1,113 @@
 #!/usr/bin/env bash
 
+moniter-mode() {
 clear
-echo "              _       ____            _       _   "
-echo "   __ _ _   _| |_ ___/ ___|  ___ _ __(_)_ __ | |_ "
-echo "  / _. | | | | __/ _ \___ \ / __| '__| | '_ \| __|"
-echo " | (_| | |_| | || (_) |__) | (__| |  | | |_) | |_ "
-echo "  \__,_|\__,_|\__\___/____/ \___|_|  |_| .__/ \__|"
-echo "                                       |_|        "
-echo "                                                  "
+echo "Change to Moniter Mode"
 echo ""
-echo "Made by Treebug842"
+echo "-Type "exit" to return to main menue"
 echo ""
-echo "1) Network Adapter Mode"
-echo "2) Network Attacks"
-echo "3) Greifing Attacks"
-echo "4) Password Cracking"
-echo "5) Exit"
+echo "======================================================================="
+iwconfig
+echo "======================================================================="
 echo ""
-read -n 1 -p "Select Option: " OPTION
-
-if [ -z "$OPTION" ]
+read -p "Enter the name of your network adapter: " NETWORK
+if [ -z "$NETWORK" ]
 then
 echo ""
-echo "Not an Option"
+echo "Cannot leave blank"
 sleep 2
-exec bash "$0" "$@"
-# Start Menue
-# ==================================================
-
-elif [ $OPTION == 1 ]
+moniter-mode
+elif [ "$NETWORK" == "exit" ]
 then
+exec bash "$0" "$@"
+fi
+ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
+if [ "$VALUE1" == 2 ]
+then
+VALUE1=1
+else
+sleep 1
+echo ""
+echo "Network adapter not found"
+sleep 2
+moniter-mode
+fi
+iwconfig "$NETWORK" mode moniter> /dev/null 2>&1 && VALUE2=2
+if [ "$VALUE2" == 2 ]
+then
+VALUE2=1
+else
+sleep 1
+echo ""
+echo "Network adapter invalid"
+sleep 2
+moniter-mode
+fi
+ifconfig "$NETWORK" down
+iwconfig "$NETWORK" mode monitor
+ifconfig "$NETWORK" up
+echo ""
+echo "Changed to Monitor Mode"
+echo ""
+read -n 1 -s -r -p "Press any key to continue..."
+clear
+exec bash "$0" "$@"
+}
+managed-mode() {
+clear
+echo "Change to Managed Mode"
+echo ""
+echo "-Type "exit" to return to main menue"
+echo ""
+echo "========================================================================="
+iwconfig
+echo "========================================================================="
+echo ""
+read -p "Enter the name of your network adapter: " NETWORK
+if [ -z "$NETWORK" ]
+then
+echo ""
+echo "Cannot leave blank"
+sleep 2
+managed-mode
+elif [ "$NETWORK" == "exit" ]
+then
+exec bash "$0" "$@"
+fi
+ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
+if [ "$VALUE1" == 2 ]
+then
+VALUE1=1
+else
+sleep 1
+echo ""
+echo "Network adapter not found"
+sleep 2
+managed-mode
+fi
+iwconfig "$NETWORK" mode moniter> /dev/null 2>&1 && VALUE2=2
+if [ "$VALUE2" == 2 ]
+then
+VALUE2=1
+else
+sleep 1
+echo ""
+echo "Network adapter invalid"
+sleep 2
+moniter-mode
+fi
+ifconfig "$NETWORK" down
+iwconfig "$NETWORK" mode managed
+ifconfig "$NETWORK" up
+echo ""
+echo "Changed to Managed Mode"
+echo ""
+read -n 1 -s -r -p "Press any key to continue..."
+clear
+exec bash "$0" "$@"
+
+}
+adapter-mode() {
 echo ""
 echo ""
 echo "1) Moniter Mode"
@@ -37,96 +115,21 @@ echo "2) Managed Mode"
 echo "3) Back"
 echo ""
 read -n 1 -p "Select Mode: " CHOICE2
-
 if [ -z "$CHOICE2" ]
 then
 echo ""
 echo "Not and Option"
 sleep 2
 exec bash "$0" "$@"
-
 elif [ $CHOICE2 == 1 ]
 then
-clear
-echo "Change to Moniter Mode"
-echo ""
-echo ""
-echo "======================================================================="
-iwconfig
-echo "======================================================================="
-echo ""
-read -p "Enter the name of your network adapter: " NETWORK
-ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
-if [ "$VALUE1" == 2 ]
-then
-VALUE1=1
-else
-sleep 1
-echo ""
-echo "Network adapter not found"
-sleep 2
-exec bash "$0" "$@"
-fi
-if [ -z "$NETWORK" ]
-then
-echo ""
-echo "Invalid Network Adapter Name"
-sleep 2
-exec bash "$0" "$@"
-else
-ifconfig "$NETWORK" down
-iwconfig "$NETWORK" mode monitor
-ifconfig "$NETWORK" up
-echo "Changed to Monitor Mode"
-echo ""
-read -n 1 -s -r -p "Press any key to continue..."
-clear
-exec bash "$0" "$@"
-fi
-
+moniter-mode
 elif [ $CHOICE2 == 2 ]
 then
-clear
-echo "Change to Managed Mode"
-echo ""
-echo ""
-echo "========================================================================="
-iwconfig
-echo "========================================================================="
-echo ""
-read -p "Enter the name of your network adapter: " NETWORK
-ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
-if [ "$VALUE1" == 2 ]
-then
-VALUE1=1
-else
-sleep 1
-echo ""
-echo "Network adapter not found"
-sleep 2
-exec bash "$0" "$@"
-fi
-if [ -z "$NETWORK" ]
-then
-echo ""
-echo "Invalid Network Adapter Name"
-sleep 2
-exec bash "$0" "$@"
-else
-ifconfig "$NETWORK" down
-iwconfig "$NETWORK" mode managed
-ifconfig "$NETWORK" up
-echo "Changed to Managed Mode"
-echo ""
-read -n 1 -s -r -p "Press any key to continue..."
-clear
-exec bash "$0" "$@"
-fi
-
+managed-mode
 elif [ $CHOICE2 == 3 ]
 then
 exec bash "$0" "$@"
-
 else
 echo ""
 echo ""
@@ -134,34 +137,13 @@ echo "Not an Option"
 sleep 2
 exec bash "$0" "$@"
 fi
-# End Menue
-# ==================================================
-# Start Menue
-
-elif [ $OPTION == 2 ]
-then
-echo ""
-echo ""
-echo "1) Scan for nearby network details"
-echo "2) Capture packets from selected network"
-echo "3) Capture PMKID from selected network"
-echo "4) Back"
-echo ""
-read -n 1 -p "Select Attack: " ATTACK
-
-if [ -z "$ATTACK" ]
-then
-echo ""
-echo "Not and Option"
-sleep 2
-exec bash "$0" "$@"
-
-elif [ $ATTACK == 1 ]
-then
+}
+Network-Scan() {
 clear
 echo "Scan for nearby networks"
 echo ""
 echo "-During scan press CTRL+C to stop"
+echo "-Type "exit" to return to main menue"
 echo ""
 echo "====================================================================="
 iwconfig
@@ -171,10 +153,13 @@ read -p "Enter the name of your network adapter: " NETWORK
 if [ -z "$NETWORK" ]
 then
 echo ""
-echo "Invalid Network Adapter Name"
+echo "Cannot leave blank"
 sleep 2
+Network-Scan
+elif [ "$NETWORK" == "exit" ]
+then
 exec bash "$0" "$@"
-else
+fi
 ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
 if [ "$VALUE1" == 2 ]
 then
@@ -184,7 +169,18 @@ sleep 1
 echo ""
 echo "Network adapter not found"
 sleep 2
-exec bash "$0" "$@"
+Network-Scan
+fi
+iwconfig "$NETWORK" mode moniter > /dev/null 2>&1 && VALUE2=2
+if [ "$VALUE2" == 2 ]
+then
+VALUE2=1
+else
+sleep 1
+echo ""
+echo "Network adapter invalid"
+sleep 2
+Network-Scan
 fi
 ifconfig "$NETWORK" down
 iwconfig "$NETWORK" mode moniter
@@ -196,10 +192,20 @@ echo ""
 read -n 1 -r -s -p "Press any key to continue..."
 clear
 exec bash "$0" "$@"
-fi
 
-elif [ $ATTACK == 2 ]
-then
+}
+
+
+
+
+
+
+
+
+
+
+
+Packet-Collect() {
 clear
 echo "Capture packets from selected network"
 echo ""
@@ -210,13 +216,6 @@ iwconfig
 echo "===================================================================="
 echo ""
 read -p "Enter name of your network adapter: " NETWORK
-if [ -z "$NETWORK" ]
-then
-echo ""
-echo "Invalid Network Adapter Name"
-sleep 2
-exec bash "$0" "$@"
-else
 ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
 if [ "$VALUE1" == 2 ]
 then
@@ -226,7 +225,18 @@ sleep 1
 echo ""
 echo "Network adapter not found"
 sleep 2
-exec bash "$0" "$@"
+managed-mode
+fi
+iwconfig "$NETWORK" mode moniter> /dev/null 2>&1 && VALUE2=2
+if [ "$VALUE2" == 2 ]
+then
+VALUE2=1
+else
+sleep 1
+echo ""
+echo "Network adapter invalid"
+sleep 2
+moniter-mode
 fi
 ifconfig "$NETWORK" down
 iwconfig "$NETWORK" mode monitor
@@ -259,6 +269,12 @@ echo ""
 echo "Invalid File Name"
 sleep 2
 exec bash "$0" "$@"
+elif [ $FILE == *"."* ]
+then
+echo ""
+echo "File name cannot contain ".""
+sleep 2
+Packet-Collect
 else
 read -n 1 -s -r -p "Press any key to start capture..."
 airodump-ng "$NETWORK" --channel "$CHANNEL" --bssid "$BSSID" --write "$FILE"
@@ -276,7 +292,50 @@ exec "$0" "$@"
 fi
 fi
 fi
-fi
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Network-Attack() {
+echo ""
+echo ""
+echo "1) Scan for nearby network details"
+echo "2) Capture packets from selected network"
+echo "3) Capture PMKID from selected network"
+echo "4) Back"
+echo ""
+read -n 1 -p "Select Attack: " ATTACK
+
+if [ -z "$ATTACK" ]
+then
+echo ""
+echo "Not and Option"
+sleep 2
+exec bash "$0" "$@"
+
+elif [ $ATTACK == 1 ]
+then
+Network-Scan
+
+elif [ $ATTACK == 2 ]
+then
+Packet-Collect
 
 elif [ $ATTACK == 3 ]
 then
@@ -310,7 +369,7 @@ echo "Network adapter not found"
 sleep 2
 exec bash "$0" "$@"
 fi
-ifconfig "$NETWORK" down > /dev/null 2>&1
+ifconfig "$NETWORK" > /dev/null 2>&1
 iwconfig "$NETWORK" mode managed > /dev/null 2>&1
 ifconfig "$NETWORK" up > /dev/null 2>&1
 airmon-ng check kill > /dev/null 2>&1
@@ -373,6 +432,101 @@ echo "Not an Option"
 sleep 2
 exec bash "$0" "$@"
 fi
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+clear
+echo "              _       ____            _       _   "
+echo "   __ _ _   _| |_ ___/ ___|  ___ _ __(_)_ __ | |_ "
+echo "  / _. | | | | __/ _ \___ \ / __| '__| | '_ \| __|"
+echo " | (_| | |_| | || (_) |__) | (__| |  | | |_) | |_ "
+echo "  \__,_|\__,_|\__\___/____/ \___|_|  |_| .__/ \__|"
+echo "                                       |_|        "
+echo "                                                  "
+echo ""
+echo "Made by Treebug842"
+echo ""
+echo "1) Network Adapter Mode"
+echo "2) Network Attacks"
+echo "3) Greifing Attacks"
+echo "4) Password Cracking"
+echo "5) Exit"
+echo ""
+read -n 1 -p "Select Option: " OPTION
+
+if [ -z "$OPTION" ]
+then
+echo ""
+echo "Not an Option"
+sleep 2
+exec bash "$0" "$@"
+
+elif [ $OPTION == 1 ]
+then
+adapter-mode
+
+# End Menue
+# ==================================================
+# Start Menue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+elif [ $OPTION == 2 ]
+then
+Network-Attack
+
+
 # End Menue
 # ==================================================
 # Start Menue
@@ -517,4 +671,3 @@ echo "Not an Option"
 sleep 2
 exec bash "$0" "$@"
 fi
-
