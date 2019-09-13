@@ -21,7 +21,7 @@ elif [ "$NETWORK" == "exit" ]
 then
 exec bash "$0" "$@"
 fi
-ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
+ifconfig "$NETWORK" down > /dev/null 2>&1 && VALUE1=2
 if [ "$VALUE1" == 2 ]
 then
 VALUE1=1
@@ -74,7 +74,7 @@ elif [ "$NETWORK" == "exit" ]
 then
 exec bash "$0" "$@"
 fi
-ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
+ifconfig "$NETWORK" down > /dev/null 2>&1 && VALUE1=2
 if [ "$VALUE1" == 2 ]
 then
 VALUE1=1
@@ -85,7 +85,7 @@ echo "Network adapter not found"
 sleep 2
 managed-mode
 fi
-iwconfig "$NETWORK" mode moniter> /dev/null 2>&1 && VALUE2=2
+iwconfig "$NETWORK" mode managed> /dev/null 2>&1 && VALUE2=2
 if [ "$VALUE2" == 2 ]
 then
 VALUE2=1
@@ -397,7 +397,7 @@ airmon-ng stop "$NETWORK"mon > /dev/null 2>&1
 echo "Invalid File Name"
 sleep 2
 exec bash "$0" "$@"
-else 
+else
 echo ""
 read -n 1 -s -r -p "Press any key to start capture..."
 clear
@@ -643,7 +643,7 @@ echo "Coming soon..."
 sleep 2
 exec bash "$0" "$@"
 elif [ $METHOD == 3 ]
-then 
+then
 echo ""
 echo "Coming soon... "
 sleep 2
@@ -670,4 +670,3 @@ echo ""
 echo "Not an Option"
 sleep 2
 exec bash "$0" "$@"
-fi
