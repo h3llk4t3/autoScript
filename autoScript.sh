@@ -192,7 +192,6 @@ echo ""
 read -n 1 -r -s -p "Press any key to continue..."
 clear
 exec bash "$0" "$@"
-
 }
 
 
