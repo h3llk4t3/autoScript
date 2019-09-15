@@ -670,3 +670,4 @@ echo ""
 echo "Not an Option"
 sleep 2
 exec bash "$0" "$@"
+fi
