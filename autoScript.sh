@@ -536,7 +536,7 @@ read -n 1 -p "Select Option: " OPTION
 if [ -z "$OPTION" ]
 then
 echo ""
-echo "Not an Option"
+echo "Cannot leave blank"
 sleep 2
 exec bash "$0" "$@"
 
@@ -679,27 +679,11 @@ echo "Network adapter invalid"
 sleep 2
 exec bash "$0" "$@"
 fi
+echo ""
 read -n 1 -s -r -p "Press any key to begin scan..."
 airodump-ng "$NETWORK"
 echo ""
-read -p "Enter channel of network: " CHANNEL
-if [ -z "$CHANNEL" ]
-then
-echo ""
-echo "Cannot leave blank"
-sleep 2
-exec bash "$0" "$@"
-fi
-if ! [[ "$CHANNEL" =~ ^[0-13]+$ ]]
-then
-echo ""
-echo "Not a channel"
-sleep 2
-exec bash "$0" "$@"
-fi
-airodump-ng "$NETWORK" -c "$CHANNEL"
-echo ""
-read -p "Enter BSSID of Network: " BSSID_Network
+read -p "Enter BSSID of the Nework you are connected to: " BSSID_Network
 BSSID_LENGTH_1=${#BSSID_Network}
 if [ -z "$BSSID_Network" ]
 then
@@ -714,7 +698,19 @@ echo "Not a valid BSSID"
 sleep 2
 exec bash "$0" "$@"
 fi
-read -p "Enter BSSID of device: " BSSID_Device
+reap -n 1 -r -s -p "Press any key to begin n-Map..."
+clear
+cd ~/Programs/autoScript
+echo "Mapping..."
+nmap -p 80,8080,8081,81 192.168.0.1/24 > awk-File
+echo ""
+echo "============================================================="
+echo ""
+grep "MAC" awk-File
+echo ""
+echo "============================================================="
+echo ""
+read -p "Enter MAC adress of device: " BSSID_Device
 BSSID_LENGTH_1=${#BSSID_Device}
 if [ -z "$BSSID_Device" ]
 then
@@ -725,7 +721,7 @@ exec bash "$0" "$@"
 elif [ "$BSSID_LENGTH_1" -ne 17 ]
 then
 echo ""
-echo "Not a valid BSSID"
+echo "Not a valid MAC adress"
 sleep 2
 exec bash "$0" "$@"
 fi
