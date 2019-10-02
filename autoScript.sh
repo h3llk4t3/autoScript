@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
 moniter-mode() {
+iwconfig | grep "Mode" > wlan.txt
 clear
 echo "Change to Moniter Mode"
 echo ""
 echo "-Type "exit" to return to main menue"
 echo ""
 echo "======================================================================="
-iwconfig
+echo ""
+cat wlan.txt
+echo ""
 echo "======================================================================="
 echo ""
 read -p "Enter the name of your network adapter: " NETWORK
@@ -54,13 +57,16 @@ clear
 exec bash "$0" "$@"
 }
 managed-mode() {
+iwconfig | grep "Mode" > wlan.txt
 clear
 echo "Change to Managed Mode"
 echo ""
 echo "-Type "exit" to return to main menue"
 echo ""
 echo "========================================================================="
-iwconfig
+echo ""
+cat wlan.txt
+echo ""
 echo "========================================================================="
 echo ""
 read -p "Enter the name of your network adapter: " NETWORK
@@ -139,6 +145,7 @@ exec bash "$0" "$@"
 fi
 }
 Network-Scan() {
+iwconfig | grep "Mode" > wlan.txt
 clear
 echo "Scan for nearby networks"
 echo ""
@@ -146,7 +153,9 @@ echo "-During scan press CTRL+C to stop"
 echo "-Type "exit" to return to main menue"
 echo ""
 echo "====================================================================="
-iwconfig
+echo ""
+cat wlan.txt
+echo ""
 echo "====================================================================="
 echo ""
 read -p "Enter the name of your network adapter: " NETWORK
@@ -247,6 +256,7 @@ Read-Filename-1
 fi
 }
 Packet-Collect() {
+iwconfig | grep "Mode" > wlan.txt
 clear
 echo "Capture packets from selected network"
 echo ""
@@ -254,7 +264,9 @@ echo "-During scan press CTRL+C to stop"
 echo "-Type "exit" to return to main menue"
 echo ""
 echo "===================================================================="
-iwconfig
+echo ""
+cat wlan.txt
+echo ""
 echo "===================================================================="
 echo ""
 read -p "Enter name of your network adapter: " NETWORK
@@ -377,13 +389,16 @@ Packet-Collect
 
 elif [ $ATTACK == 3 ]
 then
+iwconfig | grep "Mode" > wlan.txt
 clear
 echo "Capture PMKID from selected network"
 echo ""
 echo "-During scan press CTRL+C to stop"
 echo ""
 echo "===================================================================="
-iwconfig
+echo ""
+cat wlan.txt
+echo ""
 echo "===================================================================="
 echo ""
 read -p "Enter name of your network adapter: " NETWORK
@@ -637,13 +652,16 @@ exec bash "$0" "$@"
 
 elif [ $ATTACK2 == 3 ]
 then
+iwconfig | grep "Mode" > wlan.txt
 clear
 echo "Deauth a specific device on a network"
 echo ""
 echo "-Type "exit" to return to main menue"
 echo ""
 echo "======================================================================="
-iwconfig
+echo ""
+cat wlan.txt
+echo ""
 echo "======================================================================="
 echo ""
 read -p "Enter the name of your network adapter: " NETWORK
