@@ -11,10 +11,12 @@ sudo dpkg --configure -a
 sudo apt-get update --fix-missing
 sudo apt-get install -f
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 sudo apt-get install aircrack-ng -y
-sudo apt-get install hping3
+sudo apt-get install hping3 -y
 sudo apt-get install figlet toilet -y
+sudo apt-get install libpcap-dev -y
+apt-get install libcurl4-openssl-dev libssl-dev zlib1g-dev libpcap-dev -y
 cd ~/Programs/
 git clone https://github.com/ZerBea/hcxdumptool.git
 cd hcxdumptool

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 moniter-mode() {
-iwconfig | grep "Mode" > wlan.txt
+iwconfig | grep "IEEE" > wlan.txt
 clear
 echo "Change to Moniter Mode"
 echo ""
@@ -57,7 +57,7 @@ clear
 exec bash "$0" "$@"
 }
 managed-mode() {
-iwconfig | grep "Mode" > wlan.txt
+iwconfig | grep "IEEE" > wlan.txt
 clear
 echo "Change to Managed Mode"
 echo ""
@@ -145,7 +145,7 @@ exec bash "$0" "$@"
 fi
 }
 Network-Scan() {
-iwconfig | grep "Mode" > wlan.txt
+iwconfig | grep "IEEE" > wlan.txt
 clear
 echo "Scan for nearby networks"
 echo ""
@@ -256,7 +256,7 @@ Read-Filename-1
 fi
 }
 Packet-Collect() {
-iwconfig | grep "Mode" > wlan.txt
+iwconfig | grep "IEEE" > wlan.txt
 clear
 echo "Capture packets from selected network"
 echo ""
@@ -389,7 +389,7 @@ Packet-Collect
 
 elif [ $ATTACK == 3 ]
 then
-iwconfig | grep "Mode" > wlan.txt
+iwconfig | grep "IEEE" > wlan.txt
 clear
 echo "Capture PMKID from selected network"
 echo ""
@@ -543,7 +543,7 @@ echo ""
 echo "1) Network Adapter Mode"
 echo "2) Network Attacks"
 echo "3) Greifing Attacks"
-echo "4) Password Cracking"
+echo "4) PMKID Cracking"
 echo "5) Exit"
 echo ""
 read -n 1 -p "Select Option: " OPTION
@@ -652,7 +652,7 @@ exec bash "$0" "$@"
 
 elif [ $ATTACK2 == 3 ]
 then
-iwconfig | grep "Mode" > wlan.txt
+iwconfig | grep "IEEE" > wlan.txt
 clear
 echo "Deauth a specific device on a network"
 echo ""
@@ -787,14 +787,14 @@ echo "Crack password using default password lists"
 echo ""
 echo "===================================================================="
 cd ~/Programs/autoScript/Password-Lists/
-ls
+ls -1
 echo "===================================================================="
 echo ""
 read -p "Enter password list: " LIST
 echo ""
 echo "===================================================================="
 cd ~/Programs/autoScript/Capture-Files/
-ls *.16800
+ls -1 *.16800
 echo "===================================================================="
 echo ""
 read -p "Enter hash: " HASH
