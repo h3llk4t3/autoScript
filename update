@@ -1,0 +1,27 @@
+#!/bin/bash
+
+clear
+LOCAL_VERSION=$(cat VERSION)
+git clone https://github.com/Treebug842/autoScript.git
+cd autoScript
+NEW_VERSION=$(cat VERSION)
+cd ..
+if [ $NEW_VERSION -gt $LOCAL_VERSION ]
+then
+cd autoScript
+mv autoScript.sh ..
+mv update ..
+cd ..
+rm -R lib
+cd autoScript
+mv lib ..
+mv VERSION
+mv README.md
+mv depnd ..
+./depnd
+cd ..
+rm -r autoScript
+else
+rm -r autoScript
+fi
+
