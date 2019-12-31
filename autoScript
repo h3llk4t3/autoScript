@@ -1,0 +1,14 @@
+
+#!/bin/bash
+INPUT=${1:-run}
+if [ $INPUT == run ]
+then
+cd ~/Programs/autoScript
+./autoScript.sh
+elif [ $INPUT == update ]
+then
+cd ~/Programs/autoScript
+./update
+else
+echo "Not an Option"
+fi
