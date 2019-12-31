@@ -3,20 +3,20 @@
 chmod +x depnd
 ./depnd
 
-#mkdir ~/Programs
-#cd ..
-#mv autoScript ~/Programs
-#cd ~/Programs
+mkdir ~/Programs
+cd ..
+mv autoScript ~/Programs
+cd ~/Programs
 
-#git clone https://github.com/ZerBea/hcxdumptool.git
-#cd hcxdumptool
-#make
-#make install
+git clone https://github.com/ZerBea/hcxdumptool.git
+cd hcxdumptool
+make
+make install
 
-#git clone https://github.com/ZerBea/hcxtools.git
-#cd hcxtools
-#make
-#make install
+git clone https://github.com/ZerBea/hcxtools.git
+cd hcxtools
+make
+make install
 cd ~
 touch autoScript
 echo "#!/bin/bash" >> autoScript
@@ -35,4 +35,7 @@ echo "fi" >> autoScript
 chmod +x autoScript
 sudo mv autoScript /bin/
 
+cd ~/Programs/autoScript/
+mkdir Handshake
+mkdir PMKID
 rm install.sh
