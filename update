@@ -6,7 +6,7 @@ rm -r lib
 cd autoScript
 mv depnd ..
 mv lib ..
-mv autoSCript.sh ..
+mv autoScript.sh ..
 mv update ..
 mv README.md ..
 cd ..
