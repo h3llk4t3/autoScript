@@ -5,15 +5,12 @@
  \__,_|\__,_|\__\___/____/ \___|_|  |_| .__/ \__|
                                       |_| 
                                                                 
-autoScript takes kali linux network attacks, griefing attacks, password cracking and
-automates it into one easy to use program.
-
+autoScript takes common WiFi attacks and automates it into one easy to use program.
 To install please run...
 
 chmod +x install && ./install
 
 ...to install all the required dependancys.
-
 if you have any questions or suggestions about autoScript please feel free to contact
 me at tree.autoScript@gmail.com
 
