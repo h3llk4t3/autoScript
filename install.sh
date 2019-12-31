@@ -1,5 +1,6 @@
 #!/bin/bash
 
+chmod +x autoScript.sh
 chmod +x update
 chmod +x depnd
 ./depnd
