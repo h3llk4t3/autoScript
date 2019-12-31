@@ -14,3 +14,4 @@ sudo apt install zlib1g-dev -y
 apt-get install libcurl4-openssl-dev -y
 apt install hashcat -y
 apt-get install aircrack-ng -y
+apt-get install bc -y
