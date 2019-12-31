@@ -1,5 +1,6 @@
 #!/bin/bash
 
+chmod +x update
 chmod +x depnd
 ./depnd
 
