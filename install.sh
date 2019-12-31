@@ -39,4 +39,21 @@ sudo mv autoScript /bin/
 cd ~/Programs/autoScript/
 mkdir Handshake
 mkdir PMKID
+
+sudo apt-get update
+sudo apt-get autoremove -y
+sudo apt-get autoclean -y
+sudo dpkg --configure -a
+sudo apt-get update --fix-missing
+sudo apt-get install -f
+sudo apt-get update
+apt-get install figlet -y
+apt-get install libpcap -y
+sudo apt-get install libssl-dev -y
+sudo apt install zlib1g-dev -y
+apt-get install libcurl4-openssl-dev -y
+apt install hashcat -y
+apt-get install aircrack-ng -y
+apt-get install bc -y
+
 rm install.sh
