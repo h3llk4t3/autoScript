@@ -5,14 +5,14 @@ git clone https://github.com/Treebug842/autoScript.git
 rm -r lib
 cd autoScript
 mv depnd ..
-chmod +x depnd
 mv lib ..
 mv autoSCript.sh ..
-chmod +x autoScript.sh
 mv update ..
-chmod +x update
 mv README.md ..
 cd ..
+chmod +x update
+chmod +x autoScript.sh
+chmod +x depnd
 rm -r autoScript
 ./depnd
 cd
