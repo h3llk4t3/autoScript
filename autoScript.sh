@@ -91,73 +91,46 @@ moniter-mode() {
     then
     INTERFACE=${interface[0]}
     interface-check
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
 
     elif [ $INTERFACE == 2 ]
     then
     INTERFACE=${interface[1]}
     interface-check
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
 
     elif [ $INTERFACE == 3 ]
     then
     INTERFACE=${interface[2]}
     interface-check
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
 
     elif [ $INTERFACE == 4 ]
     then
     INTERFACE=${interface[3]}
     interface-check
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
 
     elif [ $INTERFACE == 5 ]
     then
     INTERFACE=${interface[4]}
     interface-check
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
 
     elif [ $INTERFACE == 6 ]
     then
     INTERFACE=${interface[5]}
     interface-check
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
 
     elif [ $INTERFACE == 7 ]
     then
     INTERFACE=${interface[6]}
     interface-check
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
 
     elif [ $INTERFACE == 8 ]
     then
     INTERFACE=${interface[7]}
     interface-check
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
 
     elif [ $INTERFACE == 9 ]
     then
     INTERFACE=${interface[8]}
     interface-check
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
 
     elif [ $INTERFACE == 0 ]
     then
