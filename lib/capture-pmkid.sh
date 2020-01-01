@@ -1,6 +1,6 @@
 
 interface-check-1() {
-    if [ -z $MAIN_INTERFACE1 ]
+    if [ -z $INTERFACE ]
     then
     echo ""
     echo "Not an Option"
@@ -10,166 +10,13 @@ interface-check-1() {
 }
 
 interface-error-check-1() {
-    if [ -z $MAIN_INTERFACE1 ]
+    if [ -z $INTERFACE ]
     then
     echo ""
     echo "Error Network Adapter Not Found"
     sleep 2
     moniter-mode-1
     fi
-}
-
-moniter-mode-1() {
-    clear
-    figlet Capture PMKID
-    echo -------------------- Choose a Network Adapter --------------------
-    iwconfig > temp.txt 2>/dev/null
-    cat temp.txt | grep "IEEE" | cut -d' ' -f1 > iwconfig.txt
-    mapfile -t interface <iwconfig.txt
-    rm temp.txt
-    rm iwconfig.txt
-    echo ""
-    if [ ! -z ${interface[0]} ]
-    then
-    echo "1) ${interface[0]}"
-    else
-    echo ""
-    echo "No Network Adapters Found!"
-    sleep 2
-    main-choice-1
-    fi
-    if [ ! -z ${interface[1]} ]
-    then
-    echo "2) ${interface[1]}"
-    fi
-    if [ ! -z ${interface[2]} ]
-    then
-    echo "3) ${interface[2]}"
-    fi
-    if [ ! -z ${interface[3]} ]
-    then
-    echo "4) ${interface[3]}"
-    fi
-    if [ ! -z ${interface[4]} ]
-    then
-    echo "5) ${interface[4]}"
-    fi
-    if [ ! -z ${interface[5]} ]
-    then
-    echo "6) ${interface[5]}"
-    fi
-    if [ ! -z ${interface[6]} ]
-    then
-    echo "7) ${interface[6]}"
-    fi
-    if [ ! -z ${interface[7]} ]
-    then
-    echo "8) ${interface[7]}"
-    fi
-    if [ ! -z ${interface[8]} ]
-    then
-    echo "9) ${interface[8]}"
-    fi
-    echo ""
-    echo "0) Exit"
-    echo ""
-    read -n 1 -p "Select Option: " INTERFACE
-    if [ -z $INTERFACE ]
-    then
-    echo ""
-    echo "Cannot leave blank"
-    sleep 2
-    moniter-mode-1
-    
-    elif [ $INTERFACE == 1 ]
-    then
-    MAIN_INTERFACE1=${interface[0]}
-    interface-check-1
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
-
-    elif [ $INTERFACE == 2 ]
-    then
-    MAIN_INTERFACE1=${interface[1]}
-    interface-check-1
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
-
-    elif [ $INTERFACE == 3 ]
-    then
-    MAIN_INTERFACE1=${interface[2]}
-    interface-check-1
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
-
-    elif [ $INTERFACE == 4 ]
-    then
-    MAIN_INTERFACE1=${interface[3]}
-    interface-check-1
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
-
-    elif [ $INTERFACE == 5 ]
-    then
-    MAIN_INTERFACE1=${interface[4]}
-    interface-check-1
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
-
-    elif [ $INTERFACE == 6 ]
-    then
-    MAIN_INTERFACE1=${interface[5]}
-    interface-check-1
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
-
-    elif [ $INTERFACE == 7 ]
-    then
-    MAIN_INTERFACE1=${interface[6]}
-    interface-check-1
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
-
-    elif [ $INTERFACE == 8 ]
-    then
-    MAIN_INTERFACE1=${interface[7]}
-    interface-check-1
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
-
-    elif [ $INTERFACE == 9 ]
-    then
-    MAIN_INTERFACE1=${interface[8]}
-    interface-check-1
-    echo ""
-    echo ""
-    echo "Network Adapter chnaged to Moniter Mode"
-
-    elif [ $INTERFACE == 0 ]
-    then
-    main-choice-1
-
-    else
-    echo ""
-    echo ""
-    echo "Not an Option"
-    sleep 2
-    moniter-mode-1
-    fi
-
-    interface-error-check-1
-
-    ifconfig $MAIN_INTERFACE1 down
-    iwconfig $MAIN_INTERFACE1 mode moniter
-    ifconfig $MAIN_INTERFACE1 up
 }
 
 show-scan-results-1() {
@@ -379,11 +226,8 @@ show-scan-results-1() {
 }
 
 network-scan-1() {
-    echo ""
-    echo "During the scan press "CTRL + C" to stop"
-    read -n 1 -s -r -p "Press any button to begin scan..."
 
-    airodump-ng -w temp1 --output-format csv "$MAIN_INTERFACE1"
+    airodump-ng -w temp1 --output-format csv "$INTERFACE"
     cat temp1-01.csv | grep "WPA2" > temp.txt
     cat temp.txt | cut -d',' -f14 > names.txt
     rm temp1-01.csv

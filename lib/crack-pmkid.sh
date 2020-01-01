@@ -1,188 +1,195 @@
 
-choose-file-1() {
+show-pmkids() {
     clear
-    figlet Crack Handshake
-    echo "---------------------------- Choose File to Crack ----------------------------"
+    figlet Crack PMKID
+    echo "--------------- Choose File to Crack ---------------"
     echo ""
-    cd Handshake/
-    ls *.cap -1 > temp.txt
-    mapfile -t CRACK2 <temp.txt
+    cd PMKID/
+    ls *.16800 -1 > temp.txt
+    mapfile -t PMKID <temp.txt
     rm temp.txt
     cd ..
 
-    if [ -z ${CRACK2[0]} ]
+    if [ -z ${PMKID[0]} ]
     then
     echo ""
     echo "No files found"
     sleep 2
     main-choice-1
     else
-    echo "1) ${CRACK2[0]}"
+    echo "1) ${PMKID[0]}"
     fi
-    if [ ! -z ${CRACK2[1]} ]
+    if [ ! -z ${PMKID[1]} ]
     then
-    echo "2) ${CRACK2[1]}"
+    echo "2) ${PMKID[1]}"
     fi
-    if [ ! -z ${CRACK2[2]} ]
+    if [ ! -z ${PMKID[2]} ]
     then
-    echo "3) ${CRACK2[2]}"
+    echo "3) ${PMKID[2]}"
     fi
-    if [ ! -z ${CRACK2[3]} ]
+    if [ ! -z ${PMKID[3]} ]
     then
-    echo "4) ${CRACK2[3]}"
+    echo "4) ${PMKID[3]}"
     fi
-    if [ ! -z ${CRACK2[4]} ]
+    if [ ! -z ${PMKID[4]} ]
     then
-    echo "5) ${CRACK2[4]}"
+    echo "5) ${PMKID[4]}"
     fi
-    if [ ! -z ${CRACK2[5]} ]
+    if [ ! -z ${PMKID[5]} ]
     then
-    echo "6) ${CRACK2[5]}"
+    echo "6) ${PMKID[5]}"
     fi
-    if [ ! -z ${CRACK2[6]} ]
+    if [ ! -z ${PMKID[6]} ]
     then
-    echo "7) ${CRACK2[6]}"
+    echo "7) ${PMKID[6]}"
     fi
-    if [ ! -z ${CRACK2[7]} ]
+    if [ ! -z ${PMKID[7]} ]
     then
-    echo "8) ${CRACK2[7]}"
+    echo "8) ${PMKID[7]}"
     fi
-    if [ ! -z ${CRACK2[8]} ]
+    if [ ! -z ${PMKID[8]} ]
     then
-    echo "9) ${CRACK2[8]}"
+    echo "9) ${PMKID[8]}"
     fi
-    if [ ! -z ${CRACK2[9]} ]
+    if [ ! -z ${PMKID[9]} ]
     then
-    echo "a) ${CRACK2[9]}"
+    echo "a) ${PMKID[9]}"
     fi
-    if [ ! -z ${CRACK2[10]} ]
+    if [ ! -z ${PMKID[10]} ]
     then
-    echo "b) ${CRACK2[10]}"
+    echo "b) ${PMKID[10]}"
     fi
-    if [ ! -z ${CRACK2[11]} ]
+    if [ ! -z ${PMKID[11]} ]
     then
-    echo "c) ${CRACK2[11]}"
+    echo "c) ${PMKID[11]}"
     fi
-    if [ ! -z ${CRACK2[12]} ]
+    if [ ! -z ${PMKID[12]} ]
     then
-    echo "d) ${CRACK2[12]}"
+    echo "d) ${PMKID[12]}"
     fi
-    if [ ! -z ${CRACK2[13]} ]
+    if [ ! -z ${PMKID[13]} ]
     then
-    echo "e) ${CRACK2[13]}"
+    echo "e) ${PMKID[13]}"
     fi
-    if [ ! -z ${CRACK2[14]} ]
+    if [ ! -z ${PMKID[14]} ]
     then
-    echo "f) ${CRACK2[14]}"
+    echo "f) ${PMKID[14]}"
     fi
-    if [ ! -z ${CRACK2[15]} ]
+    if [ ! -z ${PMKID[15]} ]
     then
-    echo "g) ${CRACK2[15]}"
+    echo "g) ${PMKID[15]}"
     fi
-    if [ ! -z ${CRACK2[16]} ]
+    if [ ! -z ${PMKID[16]} ]
     then
-    echo "h) ${CRACK2[16]}"
+    echo "h) ${PMKID[16]}"
     fi
-    if [ ! -z ${CRACK2[17]} ]
+    if [ ! -z ${PMKID[17]} ]
     then
-    echo "i) ${CRACK2[17]}"
+    echo "i) ${PMKID[17]}"
     fi
-    if [ ! -z ${CRACK2[18]} ]
+    if [ ! -z ${PMKID[18]} ]
     then
-    echo "j) ${CRACK2[18]}"
+    echo "j) ${PMKID[18]}"
     fi
-    if [ ! -z ${CRACK2[19]} ]
+    if [ ! -z ${PMKID[19]} ]
     then
-    echo "k) ${CRACK2[19]}"
+    echo "k) ${PMKID[19]}"
     fi
     echo ""
     echo "0) Exit"
     echo ""
-    read -n 1 -p "Select File: " CHOICE
-    echo ""
 
-    if [ -z $CHOICE ]
+    if [ ! -z ${PMKID[20]} ]
     then
+    echo ""
+    echo "Unable to Display the rest"
+    fi
+
+    read -n 1 -p "Select File: " SELECTION
+
+    if [ -z $SELECTION ]
+    then
+    echo ""
     echo "Cannot leave blank"
     sleep 2
-    choose-file-1
-    elif [ $CHOICE == 1 ]
+    show-pmkids
+    elif [ $SELECTION == 1 ]
     then
-    CHOSEN_FILE=${CRACK2[0]}
-    elif [ $CHOICE == 2 ]
+    CHOSEN_PMKID=${PMKID[0]}
+    elif [ $SELECTION == 2 ]
     then
-    CHOSEN_FILE=${CRACK2[1]}
-    elif [ $CHOICE == 3 ]
+    CHOSEN_PMKID=${PMKID[1]}
+    elif [ $SELECTION == 3 ]
     then
-    CHOSEN_FILE=${CRACK2[2]}
-    elif [ $CHOICE == 4 ]
+    CHOSEN_PMKID=${PMKID[2]}
+    elif [ $SELECTION == 4 ]
     then
-    CHOSEN_FILE=${CRACK2[3]}
-    elif [ $CHOICE == 5 ]
+    CHOSEN_PMKID=${PMKID[3]}
+    elif [ $SELECTION == 5 ]
     then
-    CHOSEN_FILE=${CRACK2[4]}
-    elif [ $CHOICE == 6 ]
+    CHOSEN_PMKID=${PMKID[4]}
+    elif [ $SELECTION == 6 ]
     then
-    CHOSEN_FILE=${CRACK2[5]}
-    elif [ $CHOICE == 7 ]
+    CHOSEN_PMKID=${PMKID[5]}
+    elif [ $SELECTION == 7 ]
     then
-    CHOSEN_FILE=${CRACK2[6]}
-    elif [ $CHOICE == 8 ]
+    CHOSEN_PMKID=${PMKID[6]}
+    elif [ $SELECTION == 8 ]
     then
-    CHOSEN_FILE=${CRACK2[7]}
-    elif [ $CHOICE == 9 ]
+    CHOSEN_PMKID=${PMKID[7]}
+    elif [ $SELECTION == 9 ]
     then
-    CHOSEN_FILE=${CRACK2[8]}
-    elif [ $CHOICE == a ]
+    CHOSEN_PMKID=${PMKID[8]}
+    elif [ $SELECTION == a ]
     then
-    CHOSEN_FILE=${CRACK2[9]}
-    elif [ $CHOICE == b ]
+    CHOSEN_PMKID=${PMKID[9]}
+    elif [ $SELECTION == b ]
     then
-    CHOSEN_FILE=${CRACK2[10]}
-    elif [ $CHOICE == c ]
+    CHOSEN_PMKID=${PMKID[10]}
+    elif [ $SELECTION == c ]
     then
-    CHOSEN_FILE=${CRACK2[11]}
-    elif [ $CHOICE == d ]
+    CHOSEN_PMKID=${PMKID[11]}
+    elif [ $SELECTION == d ]
     then
-    CHOSEN_FILE=${CRACK2[12]}
-    elif [ $CHOICE == e ]
+    CHOSEN_PMKID=${PMKID[12]}
+    elif [ $SELECTION == e ]
     then
-    CHOSEN_FILE=${CRACK2[13]}
-    elif [ $CHOICE == f ]
+    CHOSEN_PMKID=${PMKID[13]}
+    elif [ $SELECTION == f ]
     then
-    CHOSEN_FILE=${CRACK2[14]}
-    elif [ $CHOICE == g ]
+    CHOSEN_PMKID=${PMKID[14]}
+    elif [ $SELECTION == g ]
     then
-    CHOSEN_FILE=${CRACK2[15]}
-    elif [ $CHOICE == h ]
+    CHOSEN_PMKID=${PMKID[15]}
+    elif [ $SELECTION == h ]
     then
-    CHOSEN_FILE=${CRACK2[16]}
-    elif [ $CHOICE == i ]
+    CHOSEN_PMKID=${PMKID[16]}
+    elif [ $SELECTION == i ]
     then
-    CHOSEN_FILE=${CRACK2[17]}
-    elif [ $CHOICE == j ]
+    CHOSEN_PMKID=${PMKID[17]}
+    elif [ $SELECTION == j ]
     then
-    CHOSEN_FILE=${CRACK2[18]}
-    elif [ $CHOICE == k ]
+    CHOSEN_PMKID=${PMKID[18]}
+    elif [ $SELECTION == k ]
     then
-    CHOSEN_FILE=${CRACK2[19]}
-    elif [ $CHOICE == 0 ]
+    CHOSEN_PMKID=${PMKID[19]}
+    elif [ $SELECTION == 0 ]
     then
     main-choice-1
     fi
-    if [ -z $CHOSEN_FILE ]
+    if [ -z $CHOSEN_PMKID ]
     then
     echo ""
     echo "Not an Option"
     sleep 2
-    choose-file-1
+    show-pmkids
     fi
 }
 
-choose-list-1() {
+choose-list-2() {
     clear
-    figlet Crack Handshake
-    echo "-------------------------- Choose Password List to Use --------------------------"
+    figlet Crack PMKID
+    echo "-------------------- Choose Password List to Use --------------------"
     echo ""
     cd Password-List
     ls *.txt -1 > temp.txt
@@ -310,7 +317,7 @@ choose-list-1() {
     echo ""
     echo "Cannot leave blank"
     sleep 2
-    choose-list-1
+    choose-list-2
 
     elif [ $SELECTION == 1 ]
     then

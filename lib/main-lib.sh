@@ -3,7 +3,7 @@ source "lib/in-apt.sh"
 
 main-choice-1() {
     heading
-    echo "----------------- WiFi Cracking -----------------"
+    echo -e "\e[0;36m-----------------\e[0m \e[1;33mWiFi Cracking\e[0m \e[0;36m-----------------\e[0m"
     echo ""
     echo "1) Capture PMKID"
     echo "2) Capture Handshake"
@@ -37,7 +37,7 @@ main-choice-1() {
 
     elif [ $PATH1 == 5 ]
     then
-    exec bash "$0" "$@"
+    main-menue
 
     else
     echo ""
@@ -50,7 +50,7 @@ main-choice-1() {
 
 main-choice-2() {
     heading
-    echo "----------------- Network Recon -----------------"
+    echo -e "\e[0;36m-----------------\e[0m \e[1;33mNetwork Recon\e[0m \e[0;36m-----------------\e[0m"
     echo ""
     echo "1) Capture Packets"
     echo "2) Geolocate IP Adress"
@@ -84,7 +84,7 @@ main-choice-2() {
 
     elif [ $PATH2 == 5 ]
     then
-    exec bash "$0" "$@"
+    main-menue
 
     else
     echo ""
@@ -97,7 +97,7 @@ main-choice-2() {
 
 main-choice-3() {
     heading
-    echo "-------------------- Griefing --------------------"
+    echo -e "\e[0;36m--------------------\e[0m \e[1;33mGriefing\e[0m \e[0;36m--------------------\e[0m"
     echo ""
     echo "1) DDOS IP Adress"
     echo "2) DDOS Website"
@@ -131,7 +131,7 @@ main-choice-3() {
 
     elif [ $PATH3 == 5 ]
     then
-    exec bash "$0" "$@"
+    main-menue
 
     else
     echo ""
@@ -144,7 +144,7 @@ main-choice-3() {
 
 main-choice-4() {
     heading
-    echo "----------------- Other Programs -----------------"
+    echo -e "\e[0;36m-----------------\e[0m \e[1;33mOther Programs\e[0m \e[0;36m-----------------\e[0m"
     echo ""
     echo "1) Run RouterSploit"
     echo "2) Run Airgeddon"
@@ -168,7 +168,7 @@ main-choice-4() {
 
     elif [ $PATH4 == 3 ]
     then
-    exec bash "$0" "$@"
+    main-menue
 
     else
     echo ""
