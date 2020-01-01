@@ -66,7 +66,7 @@ crack-handshake() {
     choose-list-1
     clear
     aircrack-ng Handshake/$CHOSEN_FILE -w Password-List/$SELECTED_LIST
-    sleep 5
+    read -n 1 -r -s
     main-choice-1
 }
 capture-packets() {
