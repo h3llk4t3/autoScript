@@ -27,6 +27,7 @@ sudo mv autoScript /bin/
 
 mkdir Handshake
 mkdir PMKID
+mkdir Captured-Packets
 
 sudo apt-get update
 sudo apt-get autoremove -y
