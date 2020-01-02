@@ -37,7 +37,7 @@ main-choice-1() {
 
     elif [ $PATH1 == 5 ]
     then
-    main-menue
+    main-menu
 
     else
     echo ""
@@ -84,7 +84,7 @@ main-choice-2() {
 
     elif [ $PATH2 == 5 ]
     then
-    main-menue
+    main-menu
 
     else
     echo ""
@@ -131,7 +131,7 @@ main-choice-3() {
 
     elif [ $PATH3 == 5 ]
     then
-    main-menue
+    main-menu
 
     else
     echo ""
@@ -168,7 +168,7 @@ main-choice-4() {
 
     elif [ $PATH4 == 3 ]
     then
-    main-menue
+    main-menu
 
     else
     echo ""

@@ -148,57 +148,57 @@ show-scan-results-2() {
     elif [ $SCAN1 == a ]
     then
     CHOSEN_SCAN=${NAME2[9]}
-    CHANNEL2=${CH1[9]}
+    CHANNEL2=${CH2[9]}
     BSSID2=${BSS2[9]}
     elif [ $SCAN1 == b ]
     then
     CHOSEN_SCAN=${NAME2[10]}
-    CHANNEL2=${CH1[10]}
+    CHANNEL2=${CH2[10]}
     BSSID2=${BSS2[10]}
     elif [ $SCAN1 == c ]
     then
     CHOSEN_SCAN=${NAME2[11]}
-    CHANNEL2=${CH1[11]}
+    CHANNEL2=${CH2[11]}
     BSSID2=${BSS2[11]}
     elif [ $SCAN1 == d ]
     then
     CHOSEN_SCAN=${NAME2[12]}
-    CHANNEL2=${CH1[12]}
+    CHANNEL2=${CH2[12]}
     BSSID2=${BSS2[12]}
     elif [ $SCAN1 == e ]
     then
     CHOSEN_SCAN=${NAME2[13]}
-    CHANNEL2=${CH1[13]}
+    CHANNEL2=${CH2[13]}
     BSSID2=${BSS2[13]}
     elif [ $SCAN1 == f ]
     then
     CHOSEN_SCAN=${NAME2[14]}
-    CHANNEL2=${CH1[14]}
+    CHANNEL2=${CH2[14]}
     BSSID2=${BSS2[14]}
     elif [ $SCAN1 == g ]
     then
     CHOSEN_SCAN=${NAME2[15]}
-    CHANNEL2=${CH1[15]}
+    CHANNEL2=${CH2[15]}
     BSSID2=${BSS2[15]}
     elif [ $SCAN1 == h ]
     then
     CHOSEN_SCAN=${NAME2[16]}
-    CHANNEL2=${CH1[16]}
+    CHANNEL2=${CH2[16]}
     BSSID2=${BSS2[16]}
     elif [ $SCAN1 == i ]
     then
     CHOSEN_SCAN=${NAME2[17]}
-    CHANNEL2=${CH1[17]}
+    CHANNEL2=${CH2[17]}
     BSSID2=${BSS2[17]}
     elif [ $SCAN1 == j ]
     then
     CHOSEN_SCAN=${NAME2[18]}
-    CHANNEL2=${CH1[18]}
+    CHANNEL2=${CH2[18]}
     BSSID2=${BSS2[18]}
     elif [ $SCAN1 == k ]
     then
     CHOSEN_SCAN=${NAME2[19]}
-    CHANNEL2=${CH1[19]}
+    CHANNEL2=${CH2[19]}
     BSSID2=${BSS2[19]}
     elif [ $SCAN1 == 0 ]
     then

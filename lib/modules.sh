@@ -2,6 +2,7 @@ source "lib/capture-pmkid.sh"
 source "lib/capture-handshake.sh"
 source "lib/crack-pmkid.sh"
 source "lib/crack-handshake.sh"
+source "lib/capture-packets.sh"
 
 
 capture-pmkid() {
@@ -49,7 +50,7 @@ capture-handshake() {
     iwconfig "$INTERFACE" mode managed
     ifconfig "$INTERFACE" up
     sleep 1
-    main-choice-1
+    main-menu
 }
 
 crack-pmkid() {
@@ -58,8 +59,8 @@ crack-pmkid() {
     clear
     cd ~/Programs/autoScript
     hashcat -m 16800 PMKID/$CHOSEN_PMKID -a 0 --kernel-accel=1 -w 3 --force Password-List/$SELECTED_LIST
-    #sleep 2
-    #main-menue
+    read -n 1 -r -s
+    main-menu
 }
 crack-handshake() {
     choose-file-1
@@ -70,7 +71,20 @@ crack-handshake() {
     main-choice-1
 }
 capture-packets() {
-    coming-soon
+    network-scan-3
+    echo ""
+    read -p "File to save as: " FILE3
+    clear
+    airodump-ng --bssid $BSSID3 -c $CHANNEL3 -w $FILE3 $INTERFACE
+    mv "$FILE3"-01.cap Captured-packets
+    rm "$FILE3"-01.csv
+    rm "$FILE3"-01.kismet.csv
+    rm "$FILE3"-01.kismet.netxml
+    rm "$FILE3"-01.log.csv
+    ifconfig "$INTERFACE" down
+    iwconfig "$INTERFACE" mode managed
+    ifconfig "$INTERFACE" up
+    wireshark-check
 }
 geolocate() {
     coming-soon
